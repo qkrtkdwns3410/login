@@ -1,0 +1,39 @@
+server:
+  port: 8070 #기본 포트 설정
+spring:
+  profiles:
+    active: local
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+  # 접속 DB 설정
+  datasource:
+    url: "jdbc:mysql://db-mysql-rds-cloud.c4ccun7w5hlo.ap-northeast-2.rds.amazonaws.com:3306"
+    username: "admin"
+    password: "34103410"
+    driver-class-name: "com.mysql.jdbc.Driver"
+  mybatis:
+    # mapper 경로 지정
+    mapper-locations: query/**/*.xml
+    configuration:
+      map-underscore-to-camel-case: true
+---
+
+spring:
+  profiles: local
+custom:
+  title: "local title"
+
+
+---
+
+
+spring:
+  profiles: prod
+custom:
+  title: "prod title"
+
